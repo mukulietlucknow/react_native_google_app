@@ -5,7 +5,13 @@ import {Provider} from 'react-redux';
 import {createStore ,combineReducers , applyMiddleware} from 'redux';
 import ReduxThunk from 'redux-thunk';
 import placeReducer from './store/reducer/reducer';
+import {init} from './helpers/db'
 
+init().then(() => {
+  console.log("data done");
+}).catch((err) => {
+  console.log(err);
+});
 
 const rootReducer = combineReducers({
   places : placeReducer
