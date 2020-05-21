@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect , useCallback } from "react";
 import {
   View,
   Button,
@@ -16,6 +16,15 @@ import MapPreview from "./MapPreview";
 const LocationPicker = (props) => {
   const [isFetching, setIsFetching] = useState(false);
   const [pickedLocation, setPickedLocation] = useState();
+  const mapPickedLocation = props.navigation.getParam('pickedLocation');
+
+  const {onLocationPicked} = props;
+  useEffect(() => {
+    if(mapPickedLocation){
+        setPickedLocation(mapPickedLocation);
+        onLocationPicked(mapPickedLocation);
+    }
+  } , [mapPickedLocation])
 
   const verifyPermissions = async () => {
     const result = await Permissions.askAsync(Permissions.LOCATION);
@@ -45,7 +54,11 @@ const LocationPicker = (props) => {
         lat: location.coords.latitude,
         lng: location.coords.longitude,
       });
-      console.log(location);
+      props.onLocationPicked({
+        lat: location.coords.latitude,
+        lng: location.coords.longitude,
+      });
+      
     } catch (err) {
       Alert.alert(
         "Could not fetch location!",
@@ -69,11 +82,7 @@ const LocationPicker = (props) => {
           <Text>No location chosen yet!</Text>
         )}
       </MapPreview>
-      <Button
-        title="Get User Location"
-        color={Colors.primary}
-        onPress={getLocationHandler}
-      />
+
       <View style={styles.actions}>
         <Button
           title="Get User Location"
