@@ -2,18 +2,18 @@
   "expo": {
     "name": "react_native_google_app",
     "slug": "react_native_google_app",
+    "description" : "Some text",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/place.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#171717"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,7 +22,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier" : "com.yourfayda.mukul.ietlucknow",
+      "buildNumber" : "1.150.0"
+    },
+    "android" :{
+      "package" : "com.yourfayda.mukul.ietlucknow" ,
+      "permissions" : ["ACCESS_FINE_LOCATION" , "CAMERA" , "WRITE_EXTERNAL_STORAGE"],
+      "config" : {
+        "googleMaps": {
+          "apiKey": "AIzaSyD79mo2wJhWYleeX4dwQLzLl7Ar1SJJG64"
+        }
+      },      
+      "versionCode" : 1
     }
   }
 }

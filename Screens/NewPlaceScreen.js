@@ -55,7 +55,7 @@ const PlaceNewScreen = (props) => {
 
 PlaceNewScreen.navigationOptions = (navData) => {
   return {
-    headerTitle: "Add Place",
+    headerTitle: "Add New Place",
   };
 };
 
